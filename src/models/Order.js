@@ -29,6 +29,9 @@ export const Order = sequelize.define('Order', {
   status: {
     type: DataTypes.ENUM('Pending', 'Confirmed', 'Shipped', 'Delivered', 'Cancelled'),
     defaultValue: 'Pending',
+    validate: {
+      isIn: [['Pending', 'Confirmed', 'Shipped', 'Delivered', 'Cancelled']]
+    }
   },
   sellerId: {
     type: DataTypes.INTEGER,

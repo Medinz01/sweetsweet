@@ -34,7 +34,7 @@ export default function AddProductPage() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/product');
+      const res = await fetch('/api/product', { cache: 'no-store' });
       if (!res.ok) throw new Error('Failed to fetch products');
       const data = await res.json();
       setProducts(data.map(p => ({ ...p, price: p.pricePerKg ?? p.pricePerUnit })));
@@ -50,7 +50,7 @@ export default function AddProductPage() {
 
   const fetchCategories = async () => {
     try {
-      const res = await fetch('/api/category');
+      const res = await fetch('/api/category', { cache: 'no-store' });
       if (!res.ok) throw new Error('Failed to fetch categories');
       const data = await res.json();
       setCategories(data);

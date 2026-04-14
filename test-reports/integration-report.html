@@ -1,0 +1,382 @@
+<html><head><meta charset="utf-8"/><title>Marketplace Test Report</title><style type="text/css">:root {
+  --text-primary: #111;
+  --text-secondary: #4f4f4f;
+  --success: #006633;
+  --success-bright: #80ffbf;
+  --danger: #cc071e;
+  --danger-bright: #fbdfe0;
+  --warning: #995c00;
+  --warning-bright: #ffeea8;
+  --panel: #eee;
+  --border: #949494;
+  --disabled: #6b6b6b;
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+}
+body {
+  padding: 2rem 1rem;
+}
+.jesthtml-content {
+  margin: 0 auto;
+  max-width: 70rem;
+}
+header {
+  display: flex;
+  align-items: center;
+}
+#title {
+  margin: 0;
+  flex-grow: 1;
+}
+#logo {
+  height: 4rem;
+}
+#timestamp {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+#metadata-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.additional-information-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/** SUMMARY */
+#summary {
+  color: var(--text-primary);
+  display: flex;
+  font-family: monospace;
+  font-size: 1rem;
+}
+#summary > div {
+  margin-right: 0.5rem;
+  background: var(--panel);
+  padding: 1rem;
+  min-width: 15rem;
+}
+#summary > div:last-child {
+  margin-right: 0;
+}
+@media only screen and (max-width: 720px) {
+  #summary {
+    flex-direction: column;
+  }
+  #summary > div {
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+  #summary > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.summary-total {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.summary-passed {
+  color: var(--success);
+  border-left: 0.4rem solid var(--success);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-failed,
+.summary-obsolete-snapshots {
+  color: var(--danger);
+  border-left: 0.4rem solid var(--danger);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-pending {
+  color: var(--warning);
+  border-left: 0.4rem solid var(--warning);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-empty {
+  color: var(--disabled);
+  border-left: 0.4rem solid var(--disabled);
+  margin-bottom: 0.15rem;
+}
+
+.test-result {
+  padding: 1rem;
+  margin-bottom: 0.25rem;
+}
+.test-result:last-child {
+  border: 0;
+}
+.test-result.passed {
+  background-color: var(--success-bright);
+  color: var(--success);
+}
+.test-result.failed {
+  background-color: var(--danger-bright);
+  color: var(--danger);
+}
+.test-result.pending {
+  background-color: var(--warning-bright);
+  color: var(--warning);
+}
+
+.test-info {
+  display: flex;
+  justify-content: space-between;
+}
+.test-suitename {
+  width: 20%;
+  text-align: left;
+  font-weight: bold;
+  word-break: break-word;
+}
+.test-title {
+  width: 40%;
+  text-align: left;
+  font-style: italic;
+}
+.test-status {
+  width: 20%;
+  text-align: right;
+}
+.test-duration {
+  width: 10%;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+.failureMessages {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  border-top: 1px dashed var(--danger);
+}
+.failureMessages.suiteFailure {
+  border-top: none;
+}
+.failureMsg {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.suite-container {
+  margin-bottom: 1rem;
+}
+.suite-info {
+  padding: 1rem;
+  background-color: var(--panel);
+  color: var(--text-secondary);
+  border: 0.15rem solid;
+  border-color: var(--panel);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.suite-info:hover {
+  border-color: var(--border);
+  cursor: pointer;
+}
+.suite-info .suite-path {
+  word-break: break-all;
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.suite-info .suite-time {
+  margin-left: 1rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.85rem;
+}
+.suite-info .suite-time.warn {
+  background-color: var(--danger);
+  color: #fff;
+}
+.suite-info:before {
+  content: "\2303";
+  display: inline-block;
+  margin-right: 1rem;
+  transform: rotate(180deg) translateY(0.15rem);
+}
+.suite-container[open] .suite-info:before {
+  transform: rotate(0deg) translateY(0.15rem);
+}
+
+/* CONSOLE LOGS */
+.suite-consolelog {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: var(--panel);
+}
+.suite-consolelog-header {
+  font-weight: bold;
+}
+.suite-consolelog-item {
+  padding: 0.5rem;
+}
+.suite-consolelog-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-consolelog-item-origin {
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+.suite-consolelog-item-message {
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+/* OBSOLETE SNAPSHOTS */
+.suite-obsolete-snapshots {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: var(--danger-bright);
+  color: var(--danger);
+}
+.suite-obsolete-snapshots-header {
+  font-weight: bold;
+}
+.suite-obsolete-snapshots-item {
+  padding: 0.5rem;
+}
+.suite-obsolete-snapshots-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-obsolete-snapshots-item-message {
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+</style></head><body><main class="jesthtml-content"><header><h1 id="title">Marketplace Test Report</h1></header><section id="metadata-container"><div id="timestamp">Started: 2026-04-13 11:30:42</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (7)</div><div class="summary-passed ">7 passed</div><div class="summary-failed  summary-empty">0 failed</div><div class="summary-pending  summary-empty">0 pending</div></div><div id="test-summary"><div class="summary-total">Tests (32)</div><div class="summary-passed ">32 passed</div><div class="summary-failed  summary-empty">0 failed</div><div class="summary-pending  summary-empty">0 pending</div></div></div></section><details id="suite-1" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\sample.test.js</div><div class="suite-time">2.316s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Integration flow setup</div><div class="test-title">should test if components correctly wire together ideally without touching database</div><div class="test-status">passed</div><div class="test-duration">0.029s</div></div></div></div></details><details id="suite-2" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\category.test.js</div><div class="suite-time">2.848s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Category API (Integration) &gt; GET /api/category</div><div class="test-title">should return 401 if unauthorized</div><div class="test-status">passed</div><div class="test-duration">0.037s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Category API (Integration) &gt; GET /api/category</div><div class="test-title">should return categories on success</div><div class="test-status">passed</div><div class="test-duration">0.015s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Category API (Integration) &gt; POST /api/category</div><div class="test-title">should return 400 if missing name</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Category API (Integration) &gt; POST /api/category</div><div class="test-title">should create category successfully</div><div class="test-status">passed</div><div class="test-duration">0.006s</div></div></div></div></details><details id="suite-3" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\product.test.js</div><div class="suite-time">4.336s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; GET /api/product</div><div class="test-title">should return 401 if unauthorized</div><div class="test-status">passed</div><div class="test-duration">0.028s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; GET /api/product</div><div class="test-title">should return products on success</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; POST /api/product</div><div class="test-title">should return 401 if unauthorized</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; POST /api/product</div><div class="test-title">should return 400 if missing fields</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; POST /api/product</div><div class="test-title">should create product successfully</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; PUT /api/product</div><div class="test-title">should return 400 if ID is missing</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; PUT /api/product</div><div class="test-title">should update successfully</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; DELETE /api/product</div><div class="test-title">should return 404 if product not found</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Product API (Integration) &gt; DELETE /api/product</div><div class="test-title">should delete product successfully</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div></div></details><details id="suite-4" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\admin-orders.test.js</div><div class="suite-time">4.677s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Admin Orders API (Integration)</div><div class="test-title">should return 401 if no token is provided</div><div class="test-status">passed</div><div class="test-duration">0.035s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Admin Orders API (Integration)</div><div class="test-title">should return orders for the authenticated seller (Multitenancy Check)</div><div class="test-status">passed</div><div class="test-duration">0.319s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Admin Orders API (Integration)</div><div class="test-title">should isolate orders between different sellers</div><div class="test-status">passed</div><div class="test-duration">0.012s</div></div></div></div><div class="suite-consolelog"><div class="suite-consolelog-header">Console Log</div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at GET (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\admin\orders\route.js:18:5)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\admin-orders.test.js:47:17)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at GET (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\admin\orders\route.js:18:5)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\admin-orders.test.js:67:5)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at GET (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\admin\orders\route.js:18:5)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\admin-orders.test.js:74:5)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div></div></details><details id="suite-5" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\store.test.js</div><div class="suite-time">4.739s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Store API (Integration)</div><div class="test-title">should return 400 if slug is missing</div><div class="test-status">passed</div><div class="test-duration">0.317s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Store API (Integration)</div><div class="test-title">should return 404 if store is not found</div><div class="test-status">passed</div><div class="test-duration">0.01s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Store API (Integration)</div><div class="test-title">should return 200 and store name if found</div><div class="test-status">passed</div><div class="test-duration">0.009s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Store API (Integration)</div><div class="test-title">should handle internal server errors gracefully</div><div class="test-status">passed</div><div class="test-duration">0.024s</div></div></div></div><div class="suite-consolelog"><div class="suite-consolelog-header">Console Log</div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at GET (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\store\[slug]\route.js:8:5)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\store.test.js:17:17)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at GET (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\store\[slug]\route.js:8:5)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\store.test.js:27:17)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at GET (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\store\[slug]\route.js:8:5)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\store.test.js:37:17)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at GET (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\store\[slug]\route.js:8:5)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\store.test.js:50:17)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at error (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\store\[slug]\route.js:27:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\store.test.js:50:17)</pre><pre class="suite-consolelog-item-message">[STORE_API_ERROR] Error: DB Down
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\store.test.js:48:38)
+    at Promise.then.completed (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\run.js:121:9)
+    at run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\jest-runner\build\testWorker.js:106:12)</pre></div></div></details><details id="suite-6" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\auth.test.js</div><div class="suite-time">4.781s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Auth API (Integration) &gt; POST /api/auth/register</div><div class="test-title">should return 400 if missing fields</div><div class="test-status">passed</div><div class="test-duration">0.046s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Auth API (Integration) &gt; POST /api/auth/register</div><div class="test-title">should return 400 if user already exists</div><div class="test-status">passed</div><div class="test-duration">0.007s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Auth API (Integration) &gt; POST /api/auth/register</div><div class="test-title">should return 201 on success</div><div class="test-status">passed</div><div class="test-duration">0.007s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Auth API (Integration) &gt; POST /api/auth/login</div><div class="test-title">should return 400 if fields missing</div><div class="test-status">passed</div><div class="test-duration">0.283s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Auth API (Integration) &gt; POST /api/auth/login</div><div class="test-title">should return 401 if user not found</div><div class="test-status">passed</div><div class="test-duration">0.007s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Auth API (Integration) &gt; POST /api/auth/login</div><div class="test-title">should return 401 if wrong password</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Auth API (Integration) &gt; POST /api/auth/login</div><div class="test-title">should return 200 and setting cookie on success</div><div class="test-status">passed</div><div class="test-duration">0.014s</div></div></div></div><div class="suite-consolelog"><div class="suite-consolelog-header">Console Log</div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at POST (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\login\route.js:11:3)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\auth.test.js:59:19)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at POST (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\login\route.js:11:3)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\auth.test.js:67:19)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at POST (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\login\route.js:11:3)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\auth.test.js:77:19)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at Sequelize.log (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:1281:15)
+    at Query._logQuery (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\abstract\query.js:376:22)
+    at Query.run (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\dialects\mysql\query.js:39:27)
+    at C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at Sequelize.authenticate (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:972:5)
+    at Sequelize.sync (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\node_modules\sequelize\src\sequelize.js:812:7)
+    at POST (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\src\app\api\login\route.js:11:3)
+    at Object.&lt;anonymous&gt; (C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\auth.test.js:86:19)</pre><pre class="suite-consolelog-item-message">Executing (default): SELECT 1+1 AS result</pre></div></div></details><details id="suite-7" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">C:\Users\mdsma\Documents\PROJECTS\IB2C\IB2C\sweetsweet\__tests__\integration\ai.test.js</div><div class="suite-time warn">5.12s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">AI API (Integration) &gt; POST /api/chat</div><div class="test-title">should return 401 if unauthorized</div><div class="test-status">passed</div><div class="test-duration">0.018s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">AI API (Integration) &gt; POST /api/chat</div><div class="test-title">should communicate with Ollama and return response</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">AI API (Integration) &gt; POST /api/chat</div><div class="test-title">should handle tool calls from Ollama</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">AI API (Integration) &gt; POST /api/mcp</div><div class="test-title">should return 400 if sellerId is missing</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></details></main></body></html>

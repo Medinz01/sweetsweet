@@ -1,0 +1,805 @@
+[Body Text] Guidelines for Preparing the Project Documentation
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] ARRANGEMENT OF CONTENTS:
+[Body Text] 
+[Body Text] The sequence of the project report should be arranged and bound should be as follows:
+[Body Text] 
+[Body Text] Cover Page & Title Page
+[Body Text] Certificate
+[Body Text] Acknowledgement
+[Body Text] Abstract
+[Body Text] List of Tables
+[Body Text] List of Figures
+[Body Text] List of Acronyms (if any)
+[Body Text] Table of Contents
+[Body Text] Chapters (1 to 7)
+[Body Text] Appendices (Sample Code – 3 to 5 pages only)
+[Body Text] References
+[Body Text] 
+[Body Text] Important Note:
+[Body Text] The Project Report should have minimum 50 pages (Chapter 1 to Chapter 7) excluding the Reference Section.
+[Body Text] 
+[Body Text] Kindly instructed to follow the enclosed Guidelines regarding the Documentation
+[Body Text] 
+[Body Text] Page size – A4
+[Body Text] Margin – 3.5 cm Left, and 2.5cm on Right, Top and Bottom
+[Body Text] Font Type – Time New Roman
+[Body Text] Font Size: running text – 12, Main Headings -14 and Bold, Sub-Headings -12 and Bold
+[Body Text] Line Spacing – 1.5
+[Body Text] No (extra) spacing on First and Last Line of the paragraphs.
+[Body Text] Minimum 8 to 10 lines of content (in the Word Document) can be considered as a Paragraph.
+[Body Text] Figure Title (Caption) should be placed below the Figure and Table Title (Caption) should be placed above the Table.
+[Body Text] Sequential Numbering (for example: Figure 1.1, Figure 2.1, Figure 3.1 and so on) of Figures should be followed.
+[Body Text] Sequential Numbering (for example: Table 1.1, Table 2.1, Table 3.1 and so on) of Tables should be followed.
+[Body Text] While incorporating Figures, Graphs and Tables, description of concerned Figures and Tables should be incorporated (added) in the Documentation.
+[Body Text] During the Citation, References are represented only by Square Brackets, for Example [2]
+[Body Text] 
+[Body Text] Sample Referencing Style for a Journal
+[Body Text] S. Kumar, P. Tiwari and M. Zymbler, “Internet of Things is a Revolutionary Approach for Future Technology Enhancement: A Review”, Journal of Big Data, vol. 6, no. 111, pp. 1- 21, 2019. https://doi.org/10.1186/s40537-019-0268-2
+[Body Text] Note: URL of the above manuscript is provided for your kind information.
+[Body Text] https://journalofbigdata.springeropen.com/articles/10.1186/s40537-019-0268-2
+[Body Text] 
+[Body Text] Sample Referencing Style for a Webpage
+[Body Text] “Introduction To IoT | What Is IoT.” [Online]. Available: https://www.leverege.com/iot- ebook/what-is-iot#:~:text=%E2%80%9CThe%20Internet%20of%20Things%20(IoT,% 2Dto%2Dcomputer%20interaction.%E2% 80%9D.
+[Body Text] Note: URL of the above LINK is provided for your kind information. https://www.leverege.com/iot-ebook/what-is-iot#:~:text=%E2%80%9CThe%20Internet% 20of%20Things%20(IoT,%2Dto%2Dcomputer%20interaction.%E2%80%9D
+[Body Text] 
+[Body Text] // Sample Referencing Style for an Image
+[Body Text] What is the IoT? Introduction to the Internet of Things, [Online]. Available: https://medium.com/@bmuha1/what-is-the-iot-introduction-to-the-internet-of-thi ngs- 57335391cd5f
+[Body Text] 
+[Body Text] // Sample Referencing Style for a Conference Paper
+[Body Text] A. Phaphuangwittayakul, Y. Guo, F. Ying, W. Xu and Z. Zheng, “Self-Attention Recurrent Summarization Network with Reinforcement Learning for Video Summarization Task”, IEEE International Conference on Multimedia and Expo (ICME), China, pp. 1-6, 2021, DOI:  10.1109/ICME51207.2021.9428142
+[Body Text] 
+[Body Text] Last but not least, kindly avoid COPY and PASTE contents from sources, such as, Internet, especially from ChatGPT – AI Generated Content, Books, PPTs, PDFs and Documents by any means. Copying the contents will lead to plagiarized     contents. Henceforth, kindly request you to avoid copying the contents from any sources.
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] Template starts below:
+[Body Text] A Project Report on
+[Body Text] 
+[Body Text] TITLE OF THE PROJECT
+[Body Text] 
+[Body Text] Submitted in partial fulfillment of the requirements for the course
+[Body Text] 
+[Body Text] Software Quality and Reliability
+[Body Text] (CSE3019)
+[Normal] 
+[Normal] Class ID – AP2025264001442
+[Normal] SLOT – D1+TD1
+[Normal] Course Type – EPJ
+[Normal] Course Mode – Project Based Component (Embedded)
+[Heading 1] by
+[Normal] 
+[Body Text] Under the Esteemed Guidance of
+[Body Text] Dr. Rajasekhar Boddu
+[Body Text] Sr. Assistant Professor
+[Body Text]  
+[Normal] 
+[Normal] 
+[Normal] School of Computer Science and Engineering
+[Normal] VIT-AP University, Amaravati
+[Normal] Andhra Pradesh
+[Normal] 
+[Normal] 
+[Normal] April 2026
+[Normal] 
+[Normal] 
+[Normal] School of Computer Science and Engineering
+[Normal] VIT-AP University, Amaravati
+[Normal] Andhra Pradesh
+[Normal] 
+[Normal] CERTIFICATE
+[Body Text] 
+[Body Text] 
+[Normal] This is to certify that the project entitled “TITLE” is submitted by Name (Reg No), Name (Reg No) and Name (Reg No) in partial fulfillment of the course Software Quality and Reliability during Academic year 2025-2026.
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Heading 2] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Heading 2] ACKNOWLEDGEMENT
+[Body Text] 
+[Body Text] There are many people who helped us directly and indirectly to complete our project successfully. We would like to take this opportunity to thank one and all. First, we would like to express our deep gratitude towards our guide Dr. Mallela Siva Naga Raju, Sr. Assistant Professor, Department of Artificial Intelligence and Machine Learning in School of Computer Science and Engineering for his support in the completion of our project. 
+[Body Text] We wish to express our sincere thanks to Dr. XXXXXXXXXXX, Head of the Department, and to our school Dean Dr. Sudhakar Ilango, for providing the facilities to complete the project. We would like to thank all our faculty and friends for their help and constructive criticism during the project period. Finally, we are very much indebted to our parents for their moral support and encouragement to achieve goals.
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Normal] 
+[Heading 2] ABSTRACT
+[Body Text] 
+[Body Text] From this point onwards, the ABSTRACT of your Project starts. Write 250 words in single paragraph.
+[Body Text] 
+[Heading 2] LIST OF FIGURES
+[Heading 2] 
+[Heading 2] LIST OF TABLES
+[Heading 2] 
+[Heading 2] 
+[Heading 2] 
+[Heading 2] 
+[Normal] LIST OF ACRONYMS
+[Normal] TABLE OF CONTENTS
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] 
+[Body Text] CHAPTER 1
+[Body Text] INTRODUCTION
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] CHAPTER 2
+[Normal] LITERATURE SURVEY
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] CHAPTER 3
+[Normal] SOFTWARE AND HARDWARE REQUIREMENTS
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] CHAPTER 4
+[Normal] PROPOSED METHOD - 1
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] CHAPTER 5
+[Normal] PROPOSED METHOD - 2
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] CHAPTER 6
+[Normal] OVERALL RESULTS AND DISCUSSIONS
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] CHAPTER 7
+[Normal] CONCLUSION AND FUTURE ENHANCEMENTS
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] APPENDICES
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] REFERENCES
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] 
+[Normal] BIO-DATA
+[Normal] 
+[Normal] 
+[Normal]                                           Name		:
+[Normal] 			   Register No.		:
+[Normal]                                        Department		:
+[Normal]                                        E-mail 		: xx.xxxx@vitap.ac.in
+[Normal]                                          
+[Normal] 
+[Normal] 
+[Normal]                                        Name		:
+[Normal] 			   Register No.		:
+[Normal]                                        Department		:
+[Normal]                                        E-mail 		: xx.xxxx@vitap.ac.in
+[Normal]                                          
+[Normal] 
+[Normal] 
+[Normal]                                        Name		:
+[Normal] 			   Register No.		:
+[Normal]                                        Department		:
+[Normal]                                        E-mail 		: xx.xxxx@vitap.ac.in
+[Normal]                                          
+[Normal] 
+[Normal] 
+[Normal]                                        Name		:
+[Normal] 			   Register No.		:
+[Normal]                                        Department		:
+[Normal]                                        E-mail 		: xx.xxxx@vitap.ac.in
+[Normal]                                          
+[Normal] 
+
+--- TABLE 1 ---
+StudentName1 | Registration Number1
+Student Name2 | Registration Number2
+Student Name3 | Registration Number3
+Student Name4 | Registration Number4
+--- END TABLE ---
+
+--- TABLE 2 ---
+ | Guide
+ | Dr. Mallela Siva Naga Raju
+ | 
+ | 
+--- END TABLE ---
+
+--- TABLE 3 ---
+Name (Reg No)
+Name (Reg No)
+Name (Reg No)
+Name (Reg No)
+--- END TABLE ---
+
+--- TABLE 4 ---
+Figure No. | Figure Name | Page No.
+ |  | 
+1.1 | Name of the Figure 1 | 4
+2.1 | Name of the Figure 2 | 10
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+--- END TABLE ---
+
+--- TABLE 5 ---
+Table No. | Table Name | Page No.
+ |  | 
+1.1 | Structure of the Components | 4
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+--- END TABLE ---
+
+--- TABLE 6 ---
+Chapter No. | Chapter Name | Page Numbers
+ | Cover and Title Page | i
+ | Certificate | ii
+ | Acknowledgement | iii
+ | Abstract | iv
+ | List of Figures | v
+ | List of Tables | vi
+ | List of Acronyms | vii
+ |  | 
+1 | INTRODUCTION | 10 to 15
+ | 1.1 Introduction to the Project Work | 
+ | 1.2 Motivation | 
+ | 1.3 Problem Statement | 
+ | 1.4 Objectives | 
+ | 1.5 Scope | 
+ | 1.6 Organization of the Report | 
+ |  | 
+2 | LITERATURE SURVEY | 10 to 15
+ | 2.1 Summary | 
+ | 2.2 Existing Approaches (represent in the Table form with their Reference number, Methodology, Dataset name, Advantages, Drawbacks and Results) | 
+ | 2.2 Drawbacks of Existing Approaches | 
+ |  | 
+3 | SOFTWARE AND HARDWARE REQUIREMENTS | 4 to 5
+ | 3.1 Software Requirements | 
+ | 3.2 Hardware Requirements | 
+ | 3.3 Dataset Requirements | 
+ |  | 
+4 | PROPOSED METHOD – 1 | 10 to 15
+ | SDLC | 
+ | 4.2 Architecture Diagram | 
+ | 4.3 Results and Discussion | 
+ |  | 
+5 | PROPOSED METHOD – 2 | 10 to 15
+ | 5.1 Testing Tool | 
+ | 5.2 Architecture Diagram | 
+ | 5.3 Results and Discussion | 
+ |  | 
+6 | OVERALL RESULTS AND DISCUSSIONS | 6 to 10
+ | 6.1 Detailed explanation about the Experimental
+Results (using Graphs, Screen Shots) | 
+ | 6.2 Significance of the Proposed Method with its
+Advantages | 
+ |  | 
+7 | CONCLUSION AND FUTURE ENHANCEMENTS | 2 to 3
+ | Summary of the project emphasizing the Objectives,
+Importance, Significance, Approach adopted, Results and Future Enhancement | 
+ |  | 
+ | Appendices | 3 to 5
+ | Sample Code (restricted to 3 to 5 pages only) | 
+ |  | 
+ | References | 2 to 3
+ | Minimum of 15 references are required regarding Literature	Review,	Applications,	Description
+regarding the Block Diagrams | 
+ |  | 
+--- END TABLE ---

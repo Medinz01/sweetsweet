@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sweetsweet_app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./public:/app/public
+    environment:
+      - NODE_ENV=production
+      # Use the host's existing database configuration map
+      - DB_HOST=host.docker.internal
+      - DB_USER=devuser
+      - DB_PASSWORD=devpassword
+      - DB_NAME=devdb
+      - DB_PORT=3306
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    
+  selenium:
+    image: selenium/standalone-chrome:latest
+    container_name: sweetsweet_selenium
+    restart: always
+    ports:
+      - "4444:4444"
+      - "7900:7900" # VNC port for viewing selenium session if needed
+    shm_size: 2g # Increase shared memory for browser
+    
