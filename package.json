@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "next dev -p 3006 --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3006",
     "lint": "next lint",
     "test:unit": "cross-env JEST_REPORT_NAME=unit-report jest __tests__/unit",
     "test:integration": "cross-env JEST_REPORT_NAME=integration-report jest __tests__/integration",
-    "test:e2e": "cross-env JEST_REPORT_NAME=e2e-report jest __tests__/e2e",
+    "test:e2e": "cross-env JEST_REPORT_NAME=e2e-report jest __tests__/e2e --runInBand",
     "test:all": "cross-env JEST_REPORT_NAME=comprehensive-report jest --coverage",
     "test:sequential": "npm run test:unit && npm run test:integration && npm run test:e2e",
     "seed": "node src/lib/seed.js"

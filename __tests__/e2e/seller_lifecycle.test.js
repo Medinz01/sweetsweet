@@ -6,7 +6,7 @@ jest.setTimeout(240000);
 
 describe('Full Seller Lifecycle E2E', () => {
   let driver;
-  const baseUrl = 'http://localhost:3000';
+  const baseUrl = 'http://host.docker.internal:3006';
   const timestamp = Date.now();
   const sellerEmail = `seller_${timestamp}@example.com`;
   const sellerPass = 'password123';
@@ -16,21 +16,25 @@ describe('Full Seller Lifecycle E2E', () => {
 
   beforeAll(async () => {
     const options = new chrome.Options();
-    // options.addArguments('--headless'); // Removed for demonstration
+    // options.addArguments('--headless');
     options.addArguments('--no-sandbox');
     options.addArguments('--disable-dev-shm-usage');
     options.addArguments('--window-size=1920,1080');
 
     driver = await new Builder()
+      .usingServer('http://localhost:4444/wd/hub')
       .forBrowser('chrome')
       .setChromeOptions(options)
       .build();
-    
+
     await driver.manage().setTimeouts({ implicit: 5000 });
   });
 
   afterAll(async () => {
-    if (driver) await driver.quit();
+    if (driver) {
+      await driver.sleep(5000);
+      await driver.quit();
+    }
   });
 
   async function jsClick(element) {
@@ -79,7 +83,7 @@ describe('Full Seller Lifecycle E2E', () => {
     const submitBtn = await driver.wait(until.elementLocated(By.css('button.submit-btn')), 20000);
     await jsClick(submitBtn);
     const snackbar = await driver.wait(until.elementLocated(By.css('.MuiAlert-message')), 30000);
-    expect(await snackbar.getText()).toContain('successfully');
+    expect(await snackbar.getAttribute('textContent')).toContain('successfully');
   });
 
   test('Should Add a New Product via Admin', async () => {
@@ -91,7 +95,7 @@ describe('Full Seller Lifecycle E2E', () => {
     await driver.sleep(2000);
     await waitForAndType(By.name('name'), productName);
     await waitForAndType(By.name('slug'), `e2e-truffle-${timestamp}`);
-    
+
     // Select Category - Extreme robust mode
     console.log('Selecting category...');
     const selectTrigger = await driver.wait(until.elementLocated(By.css('.MuiSelect-select')), 20000);
@@ -100,7 +104,7 @@ describe('Full Seller Lifecycle E2E', () => {
     await driver.sleep(1000);
     await selectTrigger.click(); // MUST use standard click for MUI to trigger mousedown
     await driver.sleep(2000);
-    
+
     // Try to find the category by text directly in the body
     console.log('Locating option element...');
     const option = await driver.wait(until.elementLocated(By.xpath(`//li[contains(text(), '${categoryName}')]`)), 10000);
@@ -121,7 +125,7 @@ describe('Full Seller Lifecycle E2E', () => {
     const saveBtn = await driver.findElement(By.xpath("//button[contains(text(), 'Save')]"));
     await jsClick(saveBtn);
     const snackbar = await driver.wait(until.elementLocated(By.css('.MuiAlert-message')), 40000);
-    expect(await snackbar.getText()).toContain('Added');
+    expect(await snackbar.getAttribute('textContent')).toContain('Added');
   });
 
   test('Should Verify the Product on the Public Storefront', async () => {

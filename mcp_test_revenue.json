@@ -1,0 +1,8 @@
+{
+  "jsonrpc": "2.0",
+  "method": "get_revenue_stats",
+  "params": {
+    "sellerId": 1
+  },
+  "id": "2"
+}

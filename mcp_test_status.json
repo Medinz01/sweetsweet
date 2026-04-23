@@ -1,0 +1,8 @@
+{
+  "jsonrpc": "2.0",
+  "method": "get_order_status_breakdown",
+  "params": {
+    "sellerId": 1
+  },
+  "id": "3"
+}

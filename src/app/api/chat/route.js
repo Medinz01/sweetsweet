@@ -123,12 +123,29 @@ export async function POST(req) {
   ];
 
   try {
-    const ollamaResponse = await fetch('http://localhost:11434/api/chat', {
+    const ollamaResponse = await fetch('http://127.0.0.1:11434/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'llama3.2',
-        messages: messages,
+        model: process.env.AI_MODEL || 'llama3.2',
+        messages: [
+          { 
+            role: 'system', 
+            content: `You are the SweetSweet Store Assistant.
+            
+            IMPORTANT: When asked about store data (orders, products, etc.), you MUST call a tool by outputting ONLY a JSON object in this format:
+            {"name": "tool_name", "parameters": {}}
+            
+            AVAILABLE TOOLS:
+            - get_order_stats: Use for "total orders" or "pending orders".
+            - get_product_count: Use for "total products".
+            - get_revenue_stats: Use for revenue/money.
+            - get_order_status_breakdown: Use for order status details.
+            
+            DO NOT explain the tools. DO NOT give general definitions. Output the JSON immediately.` 
+          },
+          ...messages
+        ],
         tools: tools,
         stream: false,
       }),
@@ -139,18 +156,46 @@ export async function POST(req) {
     const responseData = await ollamaResponse.json();
     const responseMessage = responseData.message;
 
-    if (responseMessage.tool_calls && responseMessage.tool_calls.length > 0) {
-      const toolCall = responseMessage.tool_calls[0];
-      const toolName = toolCall.function.name;
-      const toolArgs = toolCall.function.arguments;
+    // --- TOOL CALL HANDLING ---
+    let toolCall = null;
 
-      const toolResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/mcp`, {
+    // 1. Check for native tool_calls (standard Ollama/OpenAI format)
+    if (responseMessage.tool_calls && responseMessage.tool_calls.length > 0) {
+      toolCall = responseMessage.tool_calls[0];
+    } 
+    // 2. Fallback: Parse manual tool call from text (common in smaller models)
+    else if (responseMessage.content && responseMessage.content.includes('get_')) {
+      try {
+        // Look for JSON-like structure in content
+        const jsonMatch = responseMessage.content.match(/\{"name":\s*"([^"]+)",\s*"parameters":\s*(\{.*\})\}/);
+        if (jsonMatch) {
+          toolCall = {
+            function: {
+              name: jsonMatch[1],
+              arguments: JSON.parse(jsonMatch[2])
+            }
+          };
+        } else if (responseMessage.content.includes('get_order_stats')) {
+           // Extreme fallback for the exact string we just saw
+           toolCall = { function: { name: 'get_order_stats', arguments: {} } };
+        }
+      } catch (e) {
+        console.error("Failed to parse manual tool call:", e);
+      }
+    }
+
+    if (toolCall) {
+      const toolName = toolCall.function.name;
+      const toolArgs = toolCall.function.arguments || {};
+
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3006';
+      const toolResponse = await fetch(`${appUrl}/api/mcp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           jsonrpc: '2.0',
           method: toolName,
-          params: { ...toolArgs, sellerId: sellerId }, // Use the secure sellerId
+          params: { ...toolArgs, sellerId: sellerId },
           id: 1,
         }),
       });
@@ -160,12 +205,17 @@ export async function POST(req) {
       const toolResultJson = await toolResponse.json();
       const toolResultContent = toolResultJson.content;
 
-      const finalResponse = await fetch('http://localhost:11434/api/chat', {
+      const finalResponse = await fetch('http://127.0.0.1:11434/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'llama3.2',
-          messages: [...messages, responseMessage, { role: 'tool', content: toolResultContent }],
+          model: process.env.AI_MODEL || 'llama3.2',
+          messages: [
+            { role: 'system', content: 'You are a helpful e-commerce assistant for the SweetSweet platform. You have access to tools to fetch real-time store data.' },
+            ...messages, 
+            responseMessage, 
+            { role: 'tool', content: toolResultContent }
+          ],
           stream: false,
         }),
       });
